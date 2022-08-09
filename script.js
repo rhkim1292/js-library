@@ -9,42 +9,37 @@ flexContainerH1.textContent = `${USER_NAME}'s Book Library`;
 
 var myLibrary = [];
 
-function Book(author, title, numOfPages) {
-    // the constructor
-    this.author = author;
-    this.title = title;
-    this.numOfPages = numOfPages;
-    this.read = false;
+function Book(author, title, numOfPages, readFlag) {
+	// the constructor
+	this.author = author;
+	this.title = title;
+	this.numOfPages = numOfPages;
+	readFlag === null ? this.readFlag = false : this.readFlag = true;
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(formData) {
+	const newBook = new Book(
+		formData.get("author_name"),
+		formData.get("title_name"),
+        formData.get("num_of_pages"),
+        formData.get("read_flag")
+	);
+    myLibrary.push(newBook);
 }
 
 newBookBtn.addEventListener("mouseup", (e) => {
-    newBookBtn.style.display = "none";
-    form.style.display = "block";
-    // const form = document.createElement("form");
-    // form.setAttribute("action", "");
-    // form.setAttribute("method", "get");
-    // form.classList.add("new-book-form");
-    // const titleLabel = document.createElement("label");
-    // titleLabel.setAttribute("for", "titleName");
-    // titleLabel.textContent = "Title:";
-    // const titleInput = document.createElement("input");
-    // titleInput.setAttribute("type", "text");
-    // titleInput.setAttribute("id", "titleName");
-    // titleInput.setAttribute("name", "title_name");
-    // titleInput.setAttribute("placeholder", "Sick Title");
-    // const submitBtn = document.createElement("button");
-    // submitBtn.setAttribute("type", "submit");
-    // submitBtn.textContent = "Add Book";
-    // form.appendChild(titleLabel);
-    // form.appendChild(titleInput);
-    // form.appendChild(submitBtn);
-    // flexContainer.appendChild(form);
+	newBookBtn.style.display = "none";
+	form.style.display = "block";
 });
 
-form.addEventListener()
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+	const formData = new FormData(e.target);
+	addBookToLibrary(formData);
+	form.reset();
+	newBookBtn.style.display = "block";
+	form.style.display = "none";
+});
 
 const testBook = new Book("rndi", "test", 1337);
 const newBookCard = document.createElement("div");
@@ -53,8 +48,7 @@ const newBookAuthor = document.createElement("p");
 const newBookPgCount = document.createElement("p");
 const newBookRead = document.createElement("p");
 newBookElement.classList.add("book-card");
-newBookElement.appendChild("")
+newBookElement.appendChild("");
 myLibrary.push(testBook);
-
 
 bookGrid.appendChild(newBookElement);

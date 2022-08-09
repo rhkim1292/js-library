@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Web Library</title>
-        <link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
 		<div class="flex-container">
@@ -29,9 +29,41 @@
 				</div>
 			</div>
 			<button id="new-book-btn">New Book</button>
-			<form action="" method="get" class="new-book-form" style="display:none;">
+			<form
+				action=""
+				method="get"
+				class="new-book-form"
+				style="display: none"
+			>
 				<label for="titleName">Title:</label>
-				<input type="text" id="titleName" name="title_name" placeholder="Sick Title">
+				<input
+					type="text"
+					id="titleName"
+					name="title_name"
+					placeholder="Sick Title"
+				/>
+				<label for="authorName">Author:</label>
+				<input
+					type="text"
+					id="authorName"
+					name="author_name"
+					placeholder="Author Name"
+				/>
+				<label for="numOfPages"># of pages:</label>
+				<input
+					type="number"
+					id="numOfPages"
+					name="num_of_pages"
+					placeholder="9001"
+					min="1"
+				/>
+				<label for="readCheck">Read?:</label>
+				<input
+					type="checkbox"
+					id="readCheck"
+					name="read_flag"
+					value="true"
+				/>
 				<button type="submit">Add Book</button>
 			</form>
 		</div>
