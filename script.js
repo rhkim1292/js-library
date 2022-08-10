@@ -32,6 +32,11 @@ function removeBookFromLibrary(index) {
 	reloadLibraryDisplay();
 }
 
+function toggleReadFlag(index) {
+	myLibrary[index].readFlag = !myLibrary[index].readFlag;
+	reloadLibraryDisplay();
+}
+
 function reloadLibraryDisplay() {
 	bookGrid.innerHTML = ""; // Clear the book grid element of its children
 
@@ -63,6 +68,7 @@ function createBookCardDOMElement(book, index) {
 
 	const newBookMarkReadBtn = document.createElement("button");
 	newBookMarkReadBtn.setAttribute("class", "book-read-btn");
+	newBookMarkReadBtn.setAttribute("onclick", `toggleReadFlag(${index})`);
 	newBookMarkReadBtn.textContent = book.readFlag
 		? "Mark as unread"
 		: "Mark as read";
