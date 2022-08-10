@@ -96,6 +96,7 @@ function enableForm() {
 }
 
 function disableForm() {
+	form.reset();
 	newBookBtn.style.display = "block";
 	form.style.display = "none";
 }
@@ -109,6 +110,5 @@ form.addEventListener("submit", (e) => {
 	const formData = new FormData(e.target);
 	addBookToLibrary(formData);
 	reloadLibraryDisplay();
-	form.reset();
 	disableForm();
 });
