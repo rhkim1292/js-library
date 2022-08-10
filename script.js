@@ -50,6 +50,9 @@ function createBookCardDOMElement(book, index) {
 	const newBookCard = document.createElement("div");
 	newBookCard.setAttribute("class", "book-card");
 
+	const newBookTitleAuthorContainer = document.createElement("div");
+	newBookTitleAuthorContainer.setAttribute("class", "book-title-author-container");
+
 	const newBookTitle = document.createElement("h3");
 	newBookTitle.setAttribute("class", "book-title");
 	newBookTitle.textContent = book.title;
@@ -57,6 +60,8 @@ function createBookCardDOMElement(book, index) {
 	const newBookAuthor = document.createElement("p");
 	newBookAuthor.setAttribute("class", "book-author");
 	newBookAuthor.textContent = `by ${book.author}`;
+
+	newBookTitleAuthorContainer.append(newBookTitle, newBookAuthor);
 
 	const newBookPgCount = document.createElement("p");
 	newBookPgCount.setAttribute("class", "book-pg-count");
@@ -79,8 +84,7 @@ function createBookCardDOMElement(book, index) {
 	newBookDeleteBtn.textContent = "Remove Book";
 
 	newBookCard.append(
-		newBookTitle,
-		newBookAuthor,
+		newBookTitleAuthorContainer,
 		newBookPgCount,
 		newBookRead,
 		newBookMarkReadBtn,

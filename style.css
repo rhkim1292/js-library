@@ -42,17 +42,35 @@ body {
 }
 
 .book-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	background-color: #fff7ff;
 	border-radius: 5px;
-	padding: 16px;
+	padding: 30px;
 	-webkit-box-shadow: 4px 3px 5px -3px rgba(0, 0, 0, 0.32);
 	-moz-box-shadow: 4px 3px 5px -3px rgba(0, 0, 0, 0.32);
 	box-shadow: 4px 3px 5px -3px rgba(0, 0, 0, 0.32);
-	text-align: center;
+	width: 200px;
 }
 
-.book-card h3 {
+.book-card p {
 	margin: 0;
+}
+
+.book-card div.book-title-author-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.book-card div.book-title-author-container h3.book-title {
+	margin: 0;
+	font-size: 25px;
+}
+
+.book-card div.book-title-author-container p.book-author {
+	text-align: right;
+	font-style: italic;
 }
 
 .new-book-form {
