@@ -9,12 +9,21 @@ flexContainerH1.textContent = `${USER_NAME}'s Book Library`;
 
 var myLibrary = [];
 
-function Book(author, title, numOfPages, readFlag) {
-	// the constructor
-	this.author = author;
-	this.title = title;
-	this.numOfPages = numOfPages;
-	readFlag === null ? (this.readFlag = false) : (this.readFlag = true);
+// function Book(author, title, numOfPages, readFlag) {
+// 	// the constructor
+// 	this.author = author;
+// 	this.title = title;
+// 	this.numOfPages = numOfPages;
+// 	readFlag === null ? (this.readFlag = false) : (this.readFlag = true);
+// }
+
+class Book {
+	constructor(author, title, numOfPages, readFlag) {
+		this.author = author;
+		this.title = title;
+		this.numOfPages = numOfPages;
+		readFlag === null ? (this.readFlag = false) : (this.readFlag = true);
+	}
 }
 
 function addBookToLibrary(formData) {
