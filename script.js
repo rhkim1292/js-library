@@ -5,6 +5,12 @@ const flexContainerH1 = document.querySelector("div.flex-container h1");
 const bookGrid = document.querySelector("div.flex-container div.book-grid");
 const newBookBtn = document.querySelector("#new-book-btn");
 const form = document.querySelector("form");
+const titleInput = document.querySelector("input#titleName");
+const titleInputError = document.querySelector("#titleName + span.error");
+const authorInput = document.querySelector("input#authorName");
+const authorInputError = document.querySelector("#authorName + span.error");
+const numOfPagesInput = document.querySelector("input#numOfPages");
+const numOfPagesInputError = document.querySelector("#numOfPages + span.error");
 flexContainerH1.textContent = `${USER_NAME}'s Book Library`;
 
 var myLibrary = [];
@@ -118,10 +124,70 @@ newBookBtn.addEventListener("mouseup", (e) => {
 	enableForm();
 });
 
+titleInput.addEventListener("input", (e) => {
+	if (titleInput.validity.valid) {
+		titleInputError.textContent = "";
+		titleInputError.className = "error";
+	} else {
+		showError();
+	}
+});
+
+authorInput.addEventListener("input", (e) => {
+	if (authorInput.validity.valid) {
+		authorInputError.textContent = "";
+		authorInputError.className = "error";
+	} else {
+		showError();
+	}
+});
+
+titleInput.addEventListener("input", (e) => {
+	if (titleInput.validity.valid) {
+		titleInputError.textContent = "";
+		titleInputError.className = "error";
+	} else {
+		showError();
+	}
+});
+
+numOfPagesInput.addEventListener("input", (e) => {
+	if (numOfPagesInput.validity.valid) {
+		numOfPagesInputError.textContent = "";
+		numOfPagesInputError.className = "error";
+	} else {
+		showError();
+	}
+});
+
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
+	if (!titleInput.validity.valid || !authorInput.validity.valid || !numOfPagesInput.validity.valid) {
+		showError();
+		return;
+	}
 	const formData = new FormData(e.target);
 	addBookToLibrary(formData);
 	reloadLibraryDisplay();
 	disableForm();
 });
+
+function showError() {
+	if (titleInput.validity.valueMissing) {
+		titleInputError.textContent = "You must enter a book title.";
+		titleInputError.className = "error active";
+	}
+
+	if (authorInput.validity.valueMissing) {
+		authorInputError.textContent = "You must enter the name of the book author.";
+		authorInputError.className = "error active";
+	}
+
+	if (numOfPagesInput.validity.valueMissing) {
+		numOfPagesInputError.textContent = "You must enter the # of pages in the book.";
+		numOfPagesInputError.className = "error active";
+	} else if (numOfPagesInput.value < numOfPagesInput.min) {
+		numOfPagesInputError.textContent = `The number of pages must be ${numOfPagesInput.min} or greater.`;
+		numOfPagesInputError.className = "error active";
+	}
+}

@@ -105,13 +105,50 @@ body {
 	padding-right: 20px;
 }
 
-.form-row input[type="text"],
-.form-row input[type="number"] {
+.form-row div input[type="text"],
+.form-row div input[type="number"] {
 	background-color: #ffffff;
 	border: 1px solid #d6d9dc;
 	border-radius: 3px;
 	padding: 7px;
 	font-size: 14px;
+}
+
+.form-col {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.form-col span.error {
+	position: absolute;
+	top: 0;
+	left: 171px;
+}
+
+input:invalid {
+	border-color: #900;
+	background-color: #fdd;
+}
+
+input:focus:invalid {
+	outline: none;
+}
+
+.error {
+	width: 100%;
+	padding: 0;
+
+	font-size: 80%;
+	color: white;
+	background-color: #900;
+	border-radius: 0 0 5px 5px;
+
+	box-sizing: border-box;
+}
+
+.error.active {
+	padding: 0.3em;
 }
 
 .form-row button {
